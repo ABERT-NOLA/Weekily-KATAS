@@ -3,3 +3,15 @@ A bookseller has lots of books classified in 26 categories labeled A, B, ... Z. 
 In the bookseller's stocklist each code c is followed by a space and by a positive integer n (int n >= 0) which indicates the quantity of books of this code in stock.
 
 For example an extract of a stocklist could be:
+
+
+OUTPUT
+
+def stock_list(stocklist, categories):
+    if not stocklist or not categories:
+        return ""
+    return " - ".join(
+        "({} : {})".format(
+            category,
+            sum(int(item.split()[1]) for item in stocklist if item[0] == category))
+        for category in categories)
